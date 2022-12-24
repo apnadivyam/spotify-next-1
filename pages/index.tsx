@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <div className="bg-black h-screen overflow-hidden">
 
-      <main>
+      <main className='flex'>
         <Sidebar />
         {/* center */}
         <Center />
