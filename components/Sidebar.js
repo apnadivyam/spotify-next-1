@@ -1,6 +1,8 @@
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import useSpotify from "../hooks/useSpotify";
+import { useRecoilState } from "recoil";
+import { playlistIdState } from "../atoms/playlistAtom";
 
 function Sidebar({}) {
 	const { data: session, status } = useSession();
@@ -8,6 +10,8 @@ function Sidebar({}) {
 
 	const spotifyApi = useSpotify();
 	const [playlist, setPlaylist] = useState([]);
+	const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
+	// console.log("you Playlist in acton >>> ", playlistId);
 
 	useEffect(() => {
 		if (spotifyApi.getAccessToken()) {
@@ -18,11 +22,8 @@ function Sidebar({}) {
 	}, [session, spotifyApi]);
 
 	return (
-		<div className="Sidebar text-gray-500 border-r border-gray-900 pl-2 pt-4 overflow-y-scroll h-screen">
+		<div className="hidden md:inline-flex text-gray-500 border-r border-gray-900 pl-2 pt-4 overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-green-400">
 			<div className=" space-y-3 ">
-				<button onClick={() => signOut()} className="flex items-center space-x-2 hover:text-white">
-					<p>Log Out</p>
-				</button>
 				<button className="flex items-center space-x-2 hover:text-white">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 						<path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -67,7 +68,7 @@ function Sidebar({}) {
 				<hr className="bor-t-[0.1px] border-gray-900" />
 				{/* Playlists */}
 				{playlist.map((plist) => (
-					<p key={plist.id} className="hover:text-white cursor-pointer">
+					<p key={plist.id} onClick={() => setPlaylistId(plist.id)} className="hover:text-white cursor-pointer">
 						{plist.name}
 					</p>
 				))}
