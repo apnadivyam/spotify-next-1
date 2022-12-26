@@ -12,7 +12,7 @@ export async function middleware(req) {
 		return NextResponse.next();
 	}
 	if (!token && pathname !== "/login") {
-		console.log(pathname);
+		// console.log(pathname);
 		return NextResponse.redirect(url);
 	}
 }

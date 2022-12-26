@@ -16,7 +16,7 @@ async function refreshAccessToken() {
 			refreshToken: refreshedToken.refresh_token ?? token.refreshToken,
 		};
 	} catch (error) {
-		console.error(error);
+		// console.error(error);
 		return {
 			...token,
 			error: "RefreshAccessTokenError",
@@ -50,11 +50,11 @@ export const authOptions = {
 			}
 			// not expired
 			if (Date.now() < token.accessTokenExpires) {
-				console.log("EXISTING TOKEN IS VALID");
+				// console.log("EXISTING TOKEN IS VALID");
 				return token;
 			} else {
 				// expired, refreshing ...
-				console.log("ACCESS TOKEN EXPIRED , REFRESHING ......");
+				// console.log("ACCESS TOKEN EXPIRED , REFRESHING ......");
 				return await refreshAccessToken(token);
 			}
 		},
