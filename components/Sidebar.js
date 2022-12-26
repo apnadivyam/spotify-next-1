@@ -22,7 +22,7 @@ function Sidebar({}) {
 	}, [session, spotifyApi]);
 
 	return (
-		<div className="hidden md:inline-flex text-gray-500 border-r border-gray-900 pl-2 pt-4 overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-green-400">
+		<div className="hidden pr-8 md:inline-flex text-gray-500 border-r border-gray-900 pl-2 pt-4 overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-white">
 			<div className=" space-y-3 ">
 				<button className="flex items-center space-x-2 hover:text-white">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

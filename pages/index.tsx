@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import {getSession} from 'next-auth/react'
 import Sidebar from '../components/Sidebar'
 import Center from '../components/Center'
+import Player from '../components/Player'
 
 const Home: NextPage = () => {
   return (
@@ -14,8 +15,9 @@ const Home: NextPage = () => {
 
       </main>
 
-      <div>
+      <div className="sticky bottom-0 text-white h-20 bg-gray-800 opacity-90">
         {/* player */}
+        <Player />
       </div>
     </div>
   )

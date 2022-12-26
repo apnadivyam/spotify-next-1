@@ -27,11 +27,11 @@ function Center() {
 				console.log("!!!! ", err);
 			});
 
-		console.log("playlist 🚀 ", playlist);
+		// console.log("playlist 🚀 ", playlist);
 	}, [playlistId, spotifyApi]);
 
 	return (
-		<div className="flex-grow text-white overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-green-400">
+		<div className="flex-grow text-white overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-white">
 			<header className=" absolute top-2 right-3">
 				<div onClick={signOut} className=" flex items-center space-x-3 opacity-90 hover:opacity-80 bg-black cursor-pointer rounded-full p-1 pr-2">
 					<img className=" rounded-full h-10" src={session?.user.image} alt="profil pic" />
